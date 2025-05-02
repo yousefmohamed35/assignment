@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/app_colors.dart';
+import '../../../../../core/app_styles.dart';
+
 class InfoCard extends StatelessWidget {
   const InfoCard({
     super.key,
@@ -16,33 +19,34 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 3,
-      child: Row(
-        children: [
-          Icon(iconData, size: 40, color: Theme.of(context).primaryColor),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(subTitle, style: Theme.of(context).textTheme.bodyMedium),
-              ],
+      margin: EdgeInsets.symmetric(vertical: 12),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: AppColors.primary,
+              child: Icon(iconData, size: 24, color: Colors.white),
             ),
-          ),
-          TextButton(
-            onPressed: onPressed,
-            child: Text('View More', style: TextStyle(color: Colors.amber)),
-          ),
-        ],
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: AppStyles.title),
+                  Text(subTitle, style: AppStyles.subtitle),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: onPressed,
+              child: Text(
+                'View More',
+                style: TextStyle(color: AppColors.primary),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
