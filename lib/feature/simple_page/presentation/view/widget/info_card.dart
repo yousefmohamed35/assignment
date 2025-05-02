@@ -22,30 +22,20 @@ class InfoCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 12),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            CircleAvatar(
-              backgroundColor: AppColors.primary,
-              child: Icon(iconData, size: 24, color: Colors.white),
+        child: ListTile(
+          title: Text(title, style: AppStyles.title),
+          subtitle: Text(subTitle, style: AppStyles.subtitle),
+          trailing: TextButton(
+            onPressed: onPressed,
+            child: Text(
+              'view more',
+              style: TextStyle(color: AppColors.primary),
             ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: AppStyles.title),
-                  Text(subTitle, style: AppStyles.subtitle),
-                ],
-              ),
-            ),
-            TextButton(
-              onPressed: onPressed,
-              child: Text(
-                'View More',
-                style: TextStyle(color: AppColors.primary),
-              ),
-            ),
-          ],
+          ),
+          leading: CircleAvatar(
+            backgroundColor: AppColors.primary,
+            child: Icon(iconData, size: 24, color: Colors.white),
+          ),
         ),
       ),
     );
